@@ -14,6 +14,9 @@ import postRoute from "./routes/posts.js";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
+import User from "./models/user.js";
+import Post from "./models/post.js";
+import { posts, users } from "./data/index.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -59,6 +62,9 @@ mongoose
   })
   .then(() => {
     console.log("MangoDB connected successfully");
+    // add dummy data
+    // User.insertMany(users);
+    // Post.insertMany(posts);
     app.listen(PORT, () => console.log(`Server running on Port: ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
